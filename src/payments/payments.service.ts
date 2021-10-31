@@ -1,11 +1,17 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model, Models } from 'mongoose';
 import { CreatePaymentDto } from './dto/create-payment.dto';
 import { UpdatePaymentDto } from './dto/update-payment.dto';
+import { PaymentsDocument, Payments } from './entities/payment.entity';
 
 @Injectable()
 export class PaymentsService {
+  constructor(@InjectModel(Payments.name) private PaymentsModel: Model<PaymentsDocument>) {}
   create(createPaymentDto: CreatePaymentDto) {
-    return 'This action adds a new payment';
+    const Payment =  new this.PaymentsModel(createPaymentDto)
+    console.log(createPaymentDto)
+    return Payment.save()
   }
 
   findAll() {

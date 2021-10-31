@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type PaymentDocument = Payment & Document;
+export type PaymentsDocument = Payments & Document;
 
 @Schema()
-export class Payment {
+export class Payments {
   @Prop()
   email: string;
 
@@ -23,5 +23,5 @@ export class Payment {
   @Prop()
   delivery:boolean;
 }
-export const CatSchema = SchemaFactory.createForClass(Payment);
+export const PaymentsSchema = SchemaFactory.createForClass(Payments);
 
