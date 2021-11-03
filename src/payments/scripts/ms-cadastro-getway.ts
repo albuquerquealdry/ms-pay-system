@@ -1,0 +1,12 @@
+const axios = require('axios');
+const { sync } = require('rimraf');
+const { async } = require('rxjs');
+
+async function IdSearch(id){
+  var gets =await axios.get(`http://localhost:3000/users/${id}`)
+  var resp = await (gets)
+  return (resp['data']) 
+}
+
+
+module.exports = IdSearch
